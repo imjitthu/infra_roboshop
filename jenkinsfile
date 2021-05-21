@@ -14,7 +14,7 @@ pipeline {
                         pwd
                         ls
                         terraform init
-                        terraform plan
+                        terraform apply -auto-approve
                         """
                         }
                         } 
@@ -29,7 +29,7 @@ pipeline {
                         pwd
                         ls
                         terraform init
-                        terraform plan
+                        terraform apply -auto-approve
                         """
                         }
                         } 
