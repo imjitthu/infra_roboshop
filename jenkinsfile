@@ -14,7 +14,7 @@ pipeline {
                         terraform init
                         """
                         } 
-                        sh 'ls'
+                        sh 'ls; pwd'
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
                     }
                     }
@@ -28,7 +28,7 @@ pipeline {
                         terraform init
                         """
                         } 
-                        sh 'ls'
+                        sh 'ls; pwd'
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mysql_inv', playbook: 'mysql.yml'
                     }
                     }
