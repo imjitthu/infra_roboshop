@@ -24,8 +24,8 @@ pipeline {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         dir ('tfas-mysql') {
                         sh """
-                        terraform init
-                        terraform apply -auto-approve
+                        // terraform init
+                        // terraform apply -auto-approve
                         """
                         }
                         } 
