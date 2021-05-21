@@ -21,15 +21,16 @@ pipeline {
                 }
                 stage ('Installing MySQL') {
                     steps {
-                        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         dir ('tfas-mysql') {
+                        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        git 'https://github.com/imjitthu/infra_roboshop.git'
                         sh """
-                        // terraform init
-                        // terraform apply -auto-approve
+                        terraform init
                         """
-                        }
                         } 
-                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
+                        sh 'ls'
+                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mysql_inv', playbook: 'mysql.yml'
+                    }
                     }
                 }
             }
