@@ -7,17 +7,16 @@ pipeline {
             parallel {
                 stage ('Installing MongoDB') {
                     steps {
+                        dir ('tfas-mongo') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/infra_roboshop.git'
-                        dir ('tfas-mongo') {
                         sh """
                         terraform init
-                        
                         """
-                        }
                         } 
                         sh 'ls'
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
+                    }
                     }
                 }
                 stage ('Installing MySQL') {
