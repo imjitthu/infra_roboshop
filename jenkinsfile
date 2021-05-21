@@ -114,7 +114,7 @@ pipeline {
                         terraform init
                         """
                         } 
-                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'user_inv', playbook: 'user.yml'
+                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'shipping_inv', playbook: 'shipping.yml'
                         }
                     }
                 }
