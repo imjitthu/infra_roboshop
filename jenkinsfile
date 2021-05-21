@@ -39,7 +39,15 @@ pipeline {
             parallel {
                 stage ('Installing Redis Component') {
                     steps {
-                        sh 'echo redis'
+                        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        git 'https://github.com/imjitthu/tfas-mysql.git'
+                        sh """
+                        terraform init
+                        """
+                        } 
+                        sh 'ls; pwd'
+                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'redis_inv', playbook: 'redis.yml'
+                    
                     }
                 }
                 stage ('Installing RabbitmQ Server') {
