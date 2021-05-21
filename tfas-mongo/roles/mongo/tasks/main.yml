@@ -1,0 +1,43 @@
+- name: Set up {{COMPONENT}} repos
+  template:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Install {{COMPONENT}}
+  yum:
+    name: mongodb-org
+    state: present
+
+- name: Update {{COMPONENT}} configuration file
+  replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Start MongoDB
+  systemd:
+    daemon_reload: yes
+    name: mongod
+    state: started
+    enabled: yes
+
+- name: Copy catalogue.js {{COMPONENT}}
+  copy:
+    src: catalogue.js
+    dest: /tmp
+
+- name: Copy users.js {{COMPONENT}}
+  copy:
+    src: users.js
+    dest: /tmp
+
+- name: Load {{COMPONENT}} schema
+  shell: mongo < /tmp/{{ item }}.js
+  loop:
+    - catalogue
+    - users
+
+- name: Restart {{COMPONENT}} Serive
+  systemd:
+    name: mongod
+    state: restarted

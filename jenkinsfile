@@ -1,0 +1,90 @@
+pipeline {
+
+    agent any
+
+    stages ('Installing RoboShop WebApplication Components') {
+        stage ('Installing Databases') {
+            parallel {
+                stage ('Installing MongoDB') {
+                    steps {
+                        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        git 'https://github.com/imjitthu/infra_tfas_roboshop.git'
+                        dir ('tfas-mongo') {
+                        sh """
+                        pwd
+                        ls
+                        terraform init
+                        terraform plan
+                        """
+                        }
+                        } 
+                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
+                    }
+                }
+                stage ('Installing MySQL') {
+                    steps {
+                        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        dir ('tfas-mysql') {
+                        sh """
+                        pwd
+                        ls
+                        terraform init
+                        terraform plan
+                        """
+                        }
+                        } 
+                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
+                    }
+                }
+            }
+        }
+        stage ('Installing Redis and RabbitMQ Server') {
+            parallel {
+                stage ('Installing Redis Component') {
+                    steps {
+                        sh 'echo redis'
+                    }
+                }
+                stage ('Installing RabbitmQ Server') {
+                    steps {
+                        sh 'echo RabbitMQ Server'
+                        }
+                    }
+                }
+            }
+        stage ('Installing Components: CART, CATALOGUE, USER, SGIPPING, PAYMENT') {
+            parallel {
+                stage ('Installing CART Component') {
+                    steps {
+                        sh 'echo CART'
+                    }
+                }
+                stage ('Installing CATALOGUE Component') {
+                    steps {
+                        sh 'echo CATALOGUE'
+                    }
+                }
+                stage ('Installing USER Component') {
+                    steps {
+                        sh 'echo USER'
+                    }
+                }
+                stage ('Installing SHIPPING Component') {
+                    steps {
+                        sh 'echo Shipping'
+                    }
+                }
+                stage ('Installing Payment Component') {
+                    steps {
+                        sh 'echo Payment'
+                    }
+                }
+            }
+        }
+        stage ('Installing Roboshop Web Server') {
+            steps {
+                sh 'echo web Server'
+                }
+            }
+        }
+    }

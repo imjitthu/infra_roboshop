@@ -1,0 +1,10 @@
+- name: Setup catalogue RoboShop Project
+  hosts: all
+  vars:
+    DOMAIN: jithendar.com
+  become: yes
+  
+  tasks:
+    - name: Load catalogue Role
+      import_role:
+        name: catalogue

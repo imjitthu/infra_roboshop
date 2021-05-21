@@ -1,0 +1,44 @@
+- name: Create Application User
+  user:
+    name: roboshop
+    comment: Robo Shop
+
+- name: Make {{COMPONENT}} Folder
+  file:
+    path: /home/roboshop/{{COMPONENT}}
+    state: directory
+
+- name: Download and Extract Artifacts
+  copy:
+   src: files/
+   dest: /home/roboshop/{{COMPONENT}}
+
+- name: Installing NodeJS dependencies
+  npm:
+    path: /home/roboshop/{{COMPONENT}}
+    state: latest
+
+# - name: Download NodeJS dependencies
+#   shell: npm install
+#   args:
+#     chdir: /home/roboshop/{{COMPONENT}}
+#   become_user: roboshop
+
+# - name: Installing NodeJS dependencies
+#   shell: |
+#     cd /home/roboshop/{{COMPONENT}}
+#     npm install
+
+#Update packages based on package.json to their latest version.
+  
+- name: Add cart.service file
+  template:
+   src: cart.service
+   dest: /etc/systemd/system/cart.service
+   
+- name: Starting cart services
+  systemd: 
+   daemon_reload: yes
+   enabled: yes
+   state: restarted
+   name: cart
