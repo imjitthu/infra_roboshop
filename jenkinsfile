@@ -62,7 +62,7 @@ pipeline {
                         } 
                         sh 'ls; pwd'
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'rabbitmq_inv', playbook: 'rabbitmq.yml'
-                    }
+                            }
                         }
                     }
                 }
