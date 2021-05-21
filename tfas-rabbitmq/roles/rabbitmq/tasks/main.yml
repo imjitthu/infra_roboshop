@@ -1,9 +1,0 @@
-- name: Create App User in RabbitMQ
-  shell: rabbitmqctl add_user roboshop roboshop123; rabbitmqctl set_user_tags roboshop administrator; rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
-
-- name: Start RabbitMQ
-  systemd:
-    name: rabbitmq-server
-    state: restarted
-
-
