@@ -71,7 +71,14 @@ pipeline {
             parallel {
                 stage ('Installing CART Component') {
                     steps {
-                        sh 'echo CART'
+                        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        git 'https://github.com/imjitthu/tfas-rabbitmq.git'
+                        sh """
+                        terraform init
+                        """
+                        } 
+                        sh 'ls; pwd'
+                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'rabbitmq_inv', playbook: 'rabbitmq.yml'
                     }
                 }
                 stage ('Installing CATALOGUE Component') {
