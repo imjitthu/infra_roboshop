@@ -35,7 +35,7 @@ pipeline {
                 }
             }
         }
-        stage ('Installing Redis and Redis Server') {
+        stage ('Installing Redis and RabbitMQ Server') {
             parallel {
                 stage ('Installing Redis Component') {
                     steps {
