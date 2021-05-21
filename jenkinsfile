@@ -82,7 +82,7 @@ pipeline {
                     steps {
                         dir('tfas-catalogue') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                        git 'https://github.com/imjitthu/tfas-cart.git'
+                        git 'https://github.com/imjitthu/tfas-catalogue.git'
                         sh """
                         terraform init
                         """
@@ -95,7 +95,7 @@ pipeline {
                     steps {
                         dir('tfas-user') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                        git 'https://github.com/imjitthu/tfas-cart.git'
+                        git 'https://github.com/imjitthu/tfas-user.git'
                         sh """
                         terraform init
                         """
@@ -106,9 +106,9 @@ pipeline {
                 }
                 stage ('Installing SHIPPING Component') {
                     steps {
-                        dir('tfas-user') {
+                        dir('tfas-shipping') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                        git 'https://github.com/imjitthu/tfas-cart.git'
+                        git 'https://github.com/imjitthu/tfas-shipping.git'
                         sh """
                         terraform init
                         """
@@ -121,7 +121,7 @@ pipeline {
                     steps {
                         dir('tfas-payment') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                        git 'https://github.com/imjitthu/tfas-cart.git'
+                        git 'https://github.com/imjitthu/tfas-payment.git'
                         sh """
                         terraform init
                         """
@@ -134,9 +134,9 @@ pipeline {
         }
         stage ('Installing Roboshop Web Server') {
             steps {
-                dir('tfas-payment') {
+                dir('tfas-frontend') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                        git 'https://github.com/imjitthu/tfas-cart.git'
+                        git 'https://github.com/imjitthu/tfas-frontend.git'
                         sh """
                         terraform init
                         """
