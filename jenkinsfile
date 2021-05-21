@@ -7,7 +7,7 @@ pipeline {
             parallel {
                 stage ('Installing MongoDB') {
                     steps {
-                        dir ('mongo') {
+                        dir ('tfas-mongo') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-mongo.git'
                         sh """
@@ -21,7 +21,7 @@ pipeline {
                 }
                 stage ('Installing MySQL') {
                     steps {
-                        dir ('mysql') {
+                        dir ('tfas-mysql') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-mysql.git'
                         sh """
@@ -39,7 +39,7 @@ pipeline {
             parallel {
                 stage ('Installing Redis Component') {
                     steps {
-                        dir('redis') {
+                        dir('tfas-redis') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-redis.git'
                         sh """
@@ -53,7 +53,7 @@ pipeline {
                 }
                 stage ('Installing RabbitmQ Server') {
                     steps {
-                        dir('rabbitmq') {
+                        dir('tfas-rabbitmq') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-rabbitmq.git'
                         sh """
