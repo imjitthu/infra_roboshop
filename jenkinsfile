@@ -14,7 +14,6 @@ pipeline {
                         terraform init
                         """
                         } 
-                        sh 'ls; pwd'
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
                     }
                     }
@@ -28,7 +27,6 @@ pipeline {
                         terraform init
                         """
                         } 
-                        sh 'ls; pwd'
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mysql_inv', playbook: 'mysql.yml'
                     }
                     }
@@ -46,7 +44,6 @@ pipeline {
                         terraform init
                         """
                         } 
-                        sh 'ls; pwd'
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'redis_inv', playbook: 'redis.yml'
                     }
                     }
@@ -60,7 +57,6 @@ pipeline {
                         terraform init
                         """
                         } 
-                        sh 'ls; pwd'
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'rabbitmq_inv', playbook: 'rabbitmq.yml'
                             }
                         }
@@ -78,36 +74,75 @@ pipeline {
                         terraform init
                         """
                         } 
-                        sh 'ls; pwd'
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'cart_inv', playbook: 'cart.yml'
                         }
                     }
                 }
                 stage ('Installing CATALOGUE Component') {
                     steps {
-                        sh 'echo CATALOGUE'
+                        dir('tfas-catalogue') {
+                        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        git 'https://github.com/imjitthu/tfas-cart.git'
+                        sh """
+                        terraform init
+                        """
+                        } 
+                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'catalogue_inv', playbook: 'catalogue.yml'
+                        }
                     }
                 }
                 stage ('Installing USER Component') {
                     steps {
-                        sh 'echo USER'
+                        dir('tfas-user') {
+                        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        git 'https://github.com/imjitthu/tfas-cart.git'
+                        sh """
+                        terraform init
+                        """
+                        } 
+                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'user_inv', playbook: 'user.yml'
+                        }
                     }
                 }
                 stage ('Installing SHIPPING Component') {
                     steps {
-                        sh 'echo Shipping'
+                        dir('tfas-user') {
+                        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        git 'https://github.com/imjitthu/tfas-cart.git'
+                        sh """
+                        terraform init
+                        """
+                        } 
+                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'user_inv', playbook: 'user.yml'
+                        }
                     }
                 }
                 stage ('Installing Payment Component') {
                     steps {
-                        sh 'echo Payment'
+                        dir('tfas-payment') {
+                        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        git 'https://github.com/imjitthu/tfas-cart.git'
+                        sh """
+                        terraform init
+                        """
+                        } 
+                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'payment_inv', playbook: 'payment.yml'
+                        }
                     }
                 }
             }
         }
         stage ('Installing Roboshop Web Server') {
             steps {
-                sh 'echo web Server'
+                dir('tfas-payment') {
+                        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        git 'https://github.com/imjitthu/tfas-cart.git'
+                        sh """
+                        terraform init
+                        """
+                        } 
+                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'payment_inv', playbook: 'payment.yml'
+                        }
                 }
             }
         }
