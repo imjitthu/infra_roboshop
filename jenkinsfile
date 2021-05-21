@@ -12,10 +12,11 @@ pipeline {
                         dir ('tfas-mongo') {
                         sh """
                         terraform init
-                        terraform apply -auto-approve
+                        
                         """
                         }
                         } 
+                        sh 'ls'
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
                     }
                 }
