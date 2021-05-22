@@ -7,7 +7,7 @@ pipeline {
             parallel {
                 stage ('Installing MongoDB') {
                     steps {
-                        dir ('tfas-mongo') {
+                        dir ('mongo') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-mongo.git'
                         sh """
@@ -21,7 +21,7 @@ pipeline {
                 }
                 stage ('Installing MySQL') {
                     steps {
-                        dir ('tfas-mysql') {
+                        dir ('mysql') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-mysql.git'
                         sh """
@@ -39,7 +39,7 @@ pipeline {
             parallel {
                 stage ('Installing Redis Component') {
                     steps {
-                        dir('tfas-redis') {
+                        dir('redis') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-redis.git'
                         sh """
@@ -53,7 +53,7 @@ pipeline {
                 }
                 stage ('Installing RabbitmQ Server') {
                     steps {
-                        dir('tfas-rabbitmq') {
+                        dir('rabbitmq') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-rabbitmq.git'
                         sh """
@@ -70,7 +70,7 @@ pipeline {
             parallel {
                 stage ('Installing CART Component') {
                     steps {
-                        dir('tfas-cart') {
+                        dir('cart') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-cart.git'
                         sh """
@@ -84,7 +84,7 @@ pipeline {
                 }
                 stage ('Installing CATALOGUE Component') {
                     steps {
-                        dir('tfas-catalogue') {
+                        dir('catalogue') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-catalogue.git'
                         sh """
@@ -98,7 +98,7 @@ pipeline {
                 }
                 stage ('Installing USER Component') {
                     steps {
-                        dir('tfas-user') {
+                        dir('user') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-user.git'
                         sh """
@@ -112,7 +112,7 @@ pipeline {
                 }
                 stage ('Installing SHIPPING Component') {
                     steps {
-                        dir('tfas-shipping') {
+                        dir('shipping') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-shipping.git'
                         sh """
@@ -126,7 +126,7 @@ pipeline {
                 }
                 stage ('Installing Payment Component') {
                     steps {
-                        dir('tfas-payment') {
+                        dir('payment') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-payment.git'
                         sh """
@@ -142,7 +142,7 @@ pipeline {
         }
         stage ('Installing Roboshop Web Server') {
             steps {
-                dir('tfas-frontend') {
+                dir('frontend') {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-frontend.git'
                         sh """
