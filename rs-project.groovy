@@ -1,4 +1,3 @@
-///
 folder('rs-components') {
   displayName('rs-components')
   description('rs-components')
