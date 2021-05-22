@@ -1,13 +1,69 @@
 pipeline {
+
   agent any
 
   stages {
-
-    stage('Builing frontend') {
+    stage('Installing DataBases') {
+      parallel {
+        stage ('Installing Mysql') {
+          steps {
+            build job: 'seed-jobs/mysql'
+          }
+        }
+        stage ('Installing Mongo') {
+          steps {
+            build job: 'seed-jobs/mong'
+          }
+        }
+      }
+    }
+    stage ('installing Cache Server') {
+      parallel {
+        stage ('Installing redis') {
+          steps {
+            build job: 'seed-jobs/redis'
+          }
+        }
+        stage ('Installing RabbitMQ Server') {
+          steps {
+            build job: 'seed-jobs/rabbitmq'
+          }
+        }
+      }
+    }
+    stage ('Installing RoboShop Components') {
+      parallel {
+        stage ('Installing Catalogue') {
+          steps {
+          build job: 'seed-jobs/catalogue'
+          }
+        }
+        stage ('Installing Cart') {
+          steps {
+            build job: 'seed-jobs/cart'
+          }
+        }
+        stage ('Installing user') {
+          steps {
+            build job: 'seed-jobs/user'
+          }
+        }
+        stage ('Installing Payment') {
+          steps {
+            build job: 'seed-jobs/payment'
+          }
+        }
+        stage ('Installing Shipping') {
+          steps {
+            build job: 'seed-jobs/shipping'
+          }
+        }
+      }
+    }
+    stage ('Installing Frontend') {
       steps {
-        sh 'pwd'
         build job: 'seed-jobs/frontend'
       }
     }
-  }
-}
+    }  
+    }  
