@@ -60,8 +60,7 @@ pipeline {
                         terraform init
                         terraform apply -auto-approve
                         """
-                        } 
-                        //ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'rabbitmq_inv', playbook: 'rabbitmq.yml'
+                                } 
                             }
                         }
                     }
