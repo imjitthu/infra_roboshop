@@ -1,4 +1,4 @@
-folder('rs-components0') {
+folder('rs-components') {
   displayName('rs-components')
   description('rs-components')
 }
