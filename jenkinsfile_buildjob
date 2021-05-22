@@ -3,10 +3,10 @@ pipeline {
 
   stages {
 
-    stage('frontend') {
+    stage('Builing frontend') {
       steps {
         sh 'pwd'
-        build job: 'rs-project/frontend'
+        build job: 'seed-jobs/frontend'
       }
     }
   }
