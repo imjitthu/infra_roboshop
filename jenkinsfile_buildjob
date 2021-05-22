@@ -7,12 +7,12 @@ pipeline {
       parallel {
         stage ('Installing Mysql') {
           steps {
-            build job: 'seed-jobs/mysql'
+            build job: 'rs-seed-jobs/mysql'
           }
         }
         stage ('Installing Mongo') {
           steps {
-            build job: 'seed-jobs/mongo'
+            build job: 'rs-seed-jobs/mongo'
           }
         }
       }
@@ -21,12 +21,12 @@ pipeline {
       parallel {
         stage ('Installing redis') {
           steps {
-            build job: 'seed-jobs/redis'
+            build job: 'rs-seed-jobs/redis'
           }
         }
         stage ('Installing RabbitMQ Server') {
           steps {
-            build job: 'seed-jobs/rabbitmq'
+            build job: 'rs-seed-jobs/rabbitmq'
           }
         }
       }
@@ -35,34 +35,34 @@ pipeline {
       parallel {
         stage ('Installing Catalogue') {
           steps {
-          build job: 'seed-jobs/catalogue'
+          build job: 'rs-seed-jobs/catalogue'
           }
         }
         stage ('Installing Cart') {
           steps {
-            build job: 'seed-jobs/cart'
+            build job: 'rs-seed-jobs/cart'
           }
         }
         stage ('Installing user') {
           steps {
-            build job: 'seed-jobs/user'
+            build job: 'rs-seed-jobs/user'
           }
         }
         stage ('Installing Payment') {
           steps {
-            build job: 'seed-jobs/payment'
+            build job: 'rs-seed-jobs/payment'
           }
         }
         stage ('Installing Shipping') {
           steps {
-            build job: 'seed-jobs/shipping'
+            build job: 'rs-seed-jobs/shipping'
           }
         }
       }
     }
     stage ('Installing Frontend') {
       steps {
-        build job: 'seed-jobs/frontend'
+        build job: 'rs-seed-jobs/frontend'
       }
     }
     }  
