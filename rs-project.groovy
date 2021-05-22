@@ -1,5 +1,6 @@
+///
 folder('rs-components') {
-  displayName('Roboshop Project')
+  displayName('rs-components')
   description('rs-components')
 }
 
@@ -9,7 +10,7 @@ pipelineJob('rs-components/mongo') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
         'userRemoteConfigs' {
           'hudson.plugins.git.UserRemoteConfig' {
-            'url'('https://github.com/imjitthu/tfas-mongo.git')
+            'url'('https://https://github.com/imjitthu/tfas-mongo.git')
           }
         }
         'branches' {
