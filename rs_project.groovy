@@ -9,7 +9,7 @@ pipelineJob('seed-jobs/mongo') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
         'userRemoteConfigs' {
           'hudson.plugins.git.UserRemoteConfig' {
-            'url'('https://https://github.com/imjitthu/tfas-mongo.git')
+            'url'('https://github.com/imjitthu/tfas-mongo.git')
           }
         }
         'branches' {
