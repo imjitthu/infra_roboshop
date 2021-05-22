@@ -1,6 +1,6 @@
-folder('rs-components') {
-  displayName('rs-components')
-  description('rs-components')
+folder('seed-jobs') {
+  displayName('seed-jobs')
+  description('seed-jobs')
 }
 
 pipelineJob('rs-components/mongo') {
