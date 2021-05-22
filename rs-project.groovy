@@ -1,9 +1,9 @@
-folder('rs-project') {
+folder('rs-components') {
   displayName('Roboshop Project')
-  description('rs-project')
+  description('rs-components')
 }
 
-pipelineJob('rs-project/frontend') {
+pipelineJob('rs-components/frontend') {
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
