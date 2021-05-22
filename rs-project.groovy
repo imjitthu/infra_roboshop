@@ -1,4 +1,3 @@
-///
 folder('rs-project') {
   displayName('Roboshop Project')
   description('rs-project')
