@@ -12,7 +12,7 @@ pipeline {
                         git 'https://github.com/imjitthu/tfas-mongo.git'
                         sh """
                         terraform init
-                        terraform apply -auto-approve
+                        terraform plan -auto-approve
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
@@ -26,7 +26,7 @@ pipeline {
                         git 'https://github.com/imjitthu/tfas-mysql.git'
                         sh """
                         terraform init
-                        terraform apply -auto-approve
+                        terraform plan -auto-approve
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mysql_inv', playbook: 'mysql.yml'
@@ -44,7 +44,7 @@ pipeline {
                         git 'https://github.com/imjitthu/tfas-redis.git'
                         sh """
                         terraform init
-                        terraform apply -auto-approve
+                        terraform plan -auto-approve
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'redis_inv', playbook: 'redis.yml'
@@ -58,7 +58,7 @@ pipeline {
                         git 'https://github.com/imjitthu/tfas-rabbitmq.git'
                         sh """
                         terraform init
-                        terraform apply -auto-approve
+                        terraform plan -auto-approve
                         """
                                 } 
                             }
@@ -75,7 +75,7 @@ pipeline {
                         git 'https://github.com/imjitthu/tfas-cart.git'
                         sh """
                         terraform init
-                        terraform apply -auto-approve
+                        terraform plan -auto-approve
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'cart_inv', playbook: 'cart.yml'
@@ -89,7 +89,7 @@ pipeline {
                         git 'https://github.com/imjitthu/tfas-catalogue.git'
                         sh """
                         terraform init
-                        terraform apply -auto-approve
+                        terraform plan -auto-approve
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'catalogue_inv', playbook: 'catalogue.yml'
@@ -103,7 +103,7 @@ pipeline {
                         git 'https://github.com/imjitthu/tfas-user.git'
                         sh """
                         terraform init
-                        terraform apply -auto-approve
+                        terraform plan -auto-approve
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'user_inv', playbook: 'user.yml'
@@ -117,7 +117,7 @@ pipeline {
                         git 'https://github.com/imjitthu/tfas-shipping.git'
                         sh """
                         terraform init
-                        terraform apply -auto-approve
+                        terraform plan -auto-approve
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'shipping_inv', playbook: 'shipping.yml'
@@ -131,7 +131,7 @@ pipeline {
                         git 'https://github.com/imjitthu/tfas-payment.git'
                         sh """
                         terraform init
-                        terraform apply -auto-approve
+                        terraform plan -auto-approve
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'payment_inv', playbook: 'payment.yml'
@@ -147,7 +147,7 @@ pipeline {
                         git 'https://github.com/imjitthu/tfas-frontend.git'
                         sh """
                         terraform init
-                        terraform apply -auto-approve
+                        terraform plan -auto-approve
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'frontend_inv', playbook: 'frontend.yml'
