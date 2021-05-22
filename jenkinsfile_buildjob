@@ -12,7 +12,7 @@ pipeline {
         }
         stage ('Installing Mongo') {
           steps {
-            build job: 'seed-jobs/mong'
+            build job: 'seed-jobs/mongo'
           }
         }
       }
