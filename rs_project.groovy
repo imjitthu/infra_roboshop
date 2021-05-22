@@ -3,7 +3,7 @@ folder('seed-jobs') {
   description('seed-jobs')
 }
 
-pipelineJob('rs-components/mongo') {
+pipelineJob('seed-jobs/mongo') {
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
