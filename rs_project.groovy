@@ -14,7 +14,7 @@ pipelineJob('seed-jobs/mongo') {
         }
         'branches' {
           'hudson.plugins.git.BranchSpec' {
-            'name'('*/main')
+            'name'('*/master')
           }
         }
       }
@@ -35,7 +35,7 @@ pipelineJob('seed-jobs/mysql') {
         }
         'branches' {
           'hudson.plugins.git.BranchSpec' {
-            'name'('*/main')
+            'name'('*/master')
           }
         }
       }
@@ -56,7 +56,7 @@ pipelineJob('seed-jobs/redis') {
         }
         'branches' {
           'hudson.plugins.git.BranchSpec' {
-            'name'('*/main')
+            'name'('*/master')
           }
         }
       }
@@ -77,7 +77,7 @@ pipelineJob('seed-jobs/rabbitmq') {
         }
         'branches' {
           'hudson.plugins.git.BranchSpec' {
-            'name'('*/main')
+            'name'('*/master')
           }
         }
       }
@@ -98,7 +98,7 @@ pipelineJob('seed-jobs/cart') {
         }
         'branches' {
           'hudson.plugins.git.BranchSpec' {
-            'name'('*/main')
+            'name'('*/master')
           }
         }
       }
@@ -119,7 +119,7 @@ pipelineJob('seed-jobs/catalogue') {
         }
         'branches' {
           'hudson.plugins.git.BranchSpec' {
-            'name'('*/main')
+            'name'('*/master')
           }
         }
       }
@@ -140,7 +140,7 @@ pipelineJob('seed-jobs/user') {
         }
         'branches' {
           'hudson.plugins.git.BranchSpec' {
-            'name'('*/main')
+            'name'('*/master')
           }
         }
       }
@@ -161,7 +161,7 @@ pipelineJob('seed-jobs/shipping') {
         }
         'branches' {
           'hudson.plugins.git.BranchSpec' {
-            'name'('*/main')
+            'name'('*/master')
           }
         }
       }
@@ -182,7 +182,7 @@ pipelineJob('seed-jobs/payment') {
         }
         'branches' {
           'hudson.plugins.git.BranchSpec' {
-            'name'('*/main')
+            'name'('*/master')
           }
         }
       }
@@ -203,7 +203,7 @@ pipelineJob('seed-jobs/frontend') {
         }
         'branches' {
           'hudson.plugins.git.BranchSpec' {
-            'name'('*/main')
+            'name'('*/master')
           }
         }
       }
