@@ -26,7 +26,7 @@ pipeline {
         always { 
             sh 'pwd ; ls'
             dir ('mongo') {
-            sh 'terraform destroy -auto-approve'
+            sh 'pwd ; ls'
             }
         }
     }
