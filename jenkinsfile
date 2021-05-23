@@ -24,7 +24,10 @@ pipeline {
         }
         post { 
         always { 
+            dir ('mongo') {
             sh 'terraform destroy -auto-approve'
+            }
         }
     }
 } 
+
