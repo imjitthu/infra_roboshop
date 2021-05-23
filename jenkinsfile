@@ -2,8 +2,8 @@ pipeline {
 
     agent any
 
-    stages ('Installing RoboShop WebApplication Components') {
-        stage ('Installing Databases') {
+    stages ('Installing RoboShop DB Components') {
+        //stage ('Installing Databases') {
             stage ('Installing MongoDB') {
                 steps {
                     dir ('mongo') {
@@ -18,7 +18,7 @@ pipeline {
                     }
                 }
             }
-        }
+        //}
     }
         post { 
         always { 
