@@ -2,6 +2,10 @@ pipeline {
 
     agent any
 
+    environment {
+        AWS = credentials('AWS')
+      }
+
     stages ('Installing RoboShop DB Components') {
         //stage ('Installing Databases') {
             stage ('Installing MongoDB') {
