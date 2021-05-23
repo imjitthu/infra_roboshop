@@ -1,0 +1,51 @@
+pipeline {
+
+    agent any
+
+//     stages ('Installing RoboShop WebApplication Components') {
+//         stage ('Installing Databases') {
+//             stage ('Installing MongoDB') {
+//                 steps {
+//                     dir ('mongo') {
+//                     withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+//                     git 'https://github.com/imjitthu/tfas-mongo.git'
+//                     sh """
+//                     terraform init
+//                     terraform plan
+//                     """
+//                     } 
+//                     ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }  
+
+// export AWS_ACCESS_KEY_ID=${AWS_USR}
+// export AWS_SECRET_ACCESS_KEY=${AWS_PSW}
+
+    stages ('Installing RoboShop WebApplication Components') {
+        stage ('Installing Databases') {
+            stage ('Installing MongoDB') {
+                steps {
+                    dir ('mongo') {
+                    git 'https://github.com/imjitthu/tfas-mongo.git'
+                    sh '''
+                    export AWS_ACCESS_KEY_ID=${awskey}
+                    export AWS_SECRET_ACCESS_KEY=${awskey}
+                    terraform init
+                    terraform apply -auto-approve
+                    ''' 
+                    ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
+                    }
+                }
+            }
+        }
+    }
+        post { 
+        always { 
+            sh 'terraform destroy -auto-approve'
+        }
+    }
+} 
