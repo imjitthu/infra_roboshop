@@ -18,6 +18,8 @@ pipeline {
                     terraform apply -auto-approve
                     ''' 
                     ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
+                    sh 'export AWS_ACCESS_KEY_ID=${AWS_USR}'
+                    sh 'export AWS_SECRET_ACCESS_KEY=${AWS_PSW}'
                     sh 'terraform destroy -auto-approve'
                     }
                 }
