@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        AWS = credentials('AWS')
+        AWS = credentials('AWS') //declaring AWS variable and passing AWS credentials to it
       }
 
     stages ('Installing RoboShop DB Components') {
@@ -32,4 +32,7 @@ pipeline {
         }
     }
 } 
+
+
+//export: The export command is a built-in utility of Linux Bash shell. It is used to ensure the environment variables and functions to be passed to child processes.
 
