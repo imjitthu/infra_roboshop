@@ -25,6 +25,7 @@ pipeline {
         }
         post { 
         always { 
+            sh 'pwd ; ls'
             dir ('mongo') {
             sh 'pwd ; ls'
             }
