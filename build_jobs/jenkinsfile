@@ -16,7 +16,7 @@ pipeline {
         }
         stage ('Installing Mongo') {
           steps {
-            build job: 'rs-seed-jobs/mongo'
+            build job: 'rs-seed-jobs/mongo', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
       }
@@ -25,12 +25,12 @@ pipeline {
       parallel {
         stage ('Installing redis') {
           steps {
-            build job: 'rs-seed-jobs/redis'
+            build job: 'rs-seed-jobs/redis', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing RabbitMQ Server') {
           steps {
-            build job: 'rs-seed-jobs/rabbitmq'
+            build job: 'rs-seed-jobs/rabbitmq', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
       }
@@ -39,34 +39,34 @@ pipeline {
       parallel {
         stage ('Installing Catalogue') {
           steps {
-          build job: 'rs-seed-jobs/catalogue'
+          build job: 'rs-seed-jobs/catalogue', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing Cart') {
           steps {
-            build job: 'rs-seed-jobs/cart'
+            build job: 'rs-seed-jobs/cart', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing user') {
           steps {
-            build job: 'rs-seed-jobs/user'
+            build job: 'rs-seed-jobs/user', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing Payment') {
           steps {
-            build job: 'rs-seed-jobs/payment'
+            build job: 'rs-seed-jobs/payment', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing Shipping') {
           steps {
-            build job: 'rs-seed-jobs/shipping'
+            build job: 'rs-seed-jobs/shipping', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
       }
     }
     stage ('Installing Frontend') {
       steps {
-        build job: 'rs-seed-jobs/frontend'
+        build job: 'rs-seed-jobs/frontend', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
       }
     }
     }  
