@@ -7,7 +7,7 @@ pipeline {
       parallel {
         stage ('Installing Mysql') {
           steps {
-            build job: 'rs-seed-jobs/mysql'//, parameters: [string(name: 'ENVIRONMENT', value: 'dev')]
+            build job: 'rs-seed-jobs/mysql', parameters: [string(name: 'tfaction', value: 'init')]
           }
         }
         stage ('Installing Mongo') {
