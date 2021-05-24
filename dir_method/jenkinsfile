@@ -9,9 +9,9 @@ pipeline {
  }
 
 environment {
-    when {
-                expression { choice == 'plan'}
-            }
+    // when {
+    //             expression { choice == 'plan'}
+    //         }
 
     tfinit = "terraform init"
     tfplan = "trerraform plan"
