@@ -28,7 +28,7 @@ environment {
                         """
                         } 
                         script {
-                        if (env.tfaction == 'apply') {
+                        if (env.tfaction == 'plan') {
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
                         }
                         }
