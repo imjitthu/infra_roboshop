@@ -4,7 +4,7 @@ pipeline {
 
  parameters {
 
-   choice(name: 'CHOICE', choices: ['plan', 'apply', 'destroy'], description: 'Pick any number')
+   choice(name: 'terraform', choices: ['plan', 'apply', 'destroy'], description: 'Pick any number')
 
  }
 
