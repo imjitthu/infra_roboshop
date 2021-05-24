@@ -4,7 +4,8 @@ pipeline {
 
  parameters {
 
-   string(name: 'tfaction', defaultValue: 'init', description: 'terraform actions')
+   //string(name: 'tfaction', defaultValue: 'init', description: 'terraform actions')
+   choice(name: 'tfaction', choices: ['init', 'plan', 'destroy'], description: 'Pick any action')
 
  }
 
