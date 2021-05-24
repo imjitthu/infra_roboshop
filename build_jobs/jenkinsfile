@@ -3,7 +3,7 @@ pipeline {
   agent any
 
   environment {
-    tfaction = "apply -auto-approve"
+    tfaction = "destroy -auto-approve"
   }
 
   stages {
