@@ -29,7 +29,7 @@ environment {
                         } 
                         script {
                         if (env.tfaction == 'destroy -auto-approve') {
-                            sh 'echo if condition working'
+                            echo "if condition working"
                             //ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
                         }
                         }
