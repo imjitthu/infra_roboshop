@@ -27,14 +27,12 @@ environment {
                         ${env.tfaction}
                         """
                         } 
-                        }    
-                    }
-                    steps {
-                        dir ('mongo') {
+                        script {
                         if (env.tfaction == 'apply') {
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
                         }
                         }
+                        }    
                     }
                     }
                 stage ('Installing MySQL') {
