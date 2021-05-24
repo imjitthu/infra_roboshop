@@ -2,12 +2,16 @@ pipeline {
 
   agent any
 
+  environment {
+    tfaction = "apply -auto-approve"
+  }
+
   stages {
     stage('Installing DataBases') {
       parallel {
         stage ('Installing Mysql') {
           steps {
-            build job: 'rs-seed-jobs/mysql', parameters: [string(name: 'tfaction', value: 'init')]
+            build job: 'rs-seed-jobs/mysql', parameters: [string(name: 'tfaction', value: "${env.tfaction})]
           }
         }
         stage ('Installing Mongo') {
