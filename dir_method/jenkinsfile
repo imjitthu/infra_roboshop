@@ -4,7 +4,7 @@ pipeline {
 
  parameters {
 
-   choice(name: 'terraform', choices: ['plan', 'apply', 'destroy'], description: 'Pick any number')
+   choice(name: 'terraform', choices: ['plan', 'apply', 'destroy'], description: 'Pick the choice')
 
  }
 
@@ -26,8 +26,9 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-mongo.git'
                         sh """
-                        ${env.tfinit}
-                        ${env.tfplan}
+                        // ${env.tfinit}
+                        // ${env.tfplan}
+                        ${params.Environment}
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
