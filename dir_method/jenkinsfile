@@ -5,15 +5,14 @@ pipeline {
  parameters {
 
    //choice(name: 'terraform', choices: ['plan', 'apply', 'destroy'], description: 'Pick the choice listed')
-   string(name: 'ACTION', defaultValue: 'init', description: 'terraform init')
-   string(name: 'ACTION', defaultValue: 'plan', description: 'terraform plan')
+   string(name: 'tfaction', defaultValue: 'init', description: 'terraform init')
 
  }
 
 environment {
 
-    tfinit = "terraform init"
-    tfplan = "terraform plan"
+    tftfaction = "terraform init"
+    
             }
 
     stages ('Installing RoboShop WebApplication Components') {
@@ -25,8 +24,7 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-mongo.git'
                         sh """
-                        ${env.tfinit}
-                        ${env.tfplan}
+                        ${env.tftfaction}
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
@@ -39,8 +37,7 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-mysql.git'
                         sh """
-                        ${env.tfinit}
-                        ${env.tfplan}
+                        ${env.tfaction}
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mysql_inv', playbook: 'mysql.yml'
@@ -57,8 +54,7 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-redis.git'
                         sh """
-                        ${env.tfinit}
-                        ${env.tfplan}
+                        ${env.tfaction}
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'redis_inv', playbook: 'redis.yml'
@@ -71,8 +67,7 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-rabbitmq.git'
                         sh """
-                        ${env.tfinit}
-                        ${env.tfplan}
+                        ${env.tfaction}
                         """
                                 } 
                             }
@@ -88,8 +83,7 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-cart.git'
                         sh """
-                        ${env.tfinit}
-                        ${env.tfplan}
+                        ${env.tfaction}
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'cart_inv', playbook: 'cart.yml'
@@ -102,8 +96,7 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-catalogue.git'
                         sh """
-                        ${env.tfinit}
-                        ${env.tfplan}
+                        ${env.tfaction}
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'catalogue_inv', playbook: 'catalogue.yml'
@@ -116,8 +109,7 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-user.git'
                         sh """
-                        ${env.tfinit}
-                        ${env.tfplan}
+                        ${env.tfaction}
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'user_inv', playbook: 'user.yml'
@@ -130,8 +122,7 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-shipping.git'
                         sh """
-                        ${env.tfinit}
-                        ${env.tfplan}
+                        ${env.tfaction}
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'shipping_inv', playbook: 'shipping.yml'
@@ -144,8 +135,7 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-payment.git'
                         sh """
-                        ${env.tfinit}
-                        ${env.tfplan}
+                        ${env.tfaction}
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'payment_inv', playbook: 'payment.yml'
@@ -160,8 +150,7 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-frontend.git'
                         sh """
-                        ${env.tfinit}
-                        ${env.tfplan}
+                        ${env.tfaction}
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'frontend_inv', playbook: 'frontend.yml'
