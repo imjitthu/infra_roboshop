@@ -4,7 +4,6 @@ pipeline {
 
  parameters {
 
-   //string(name: 'tfaction', defaultValue: 'init', description: 'terraform actions')
    choice(name: 'tfaction', choices: ['init', 'plan', 'apply -auto-approve', 'destroy -auto-approve'], description: 'Pick any action')
 
  }
