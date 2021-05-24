@@ -9,9 +9,6 @@ pipeline {
  }
 
 environment {
-    // when {
-    //             expression { choice == 'plan'}
-    //         }
 
     tfinit = "terraform init"
     tfplan = "trerraform plan"
@@ -26,8 +23,6 @@ environment {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-mongo.git'
                         sh """
-                        // ${env.tfinit}
-                        // ${env.tfplan}
                         ${params.Environment}
                         """
                         } 
