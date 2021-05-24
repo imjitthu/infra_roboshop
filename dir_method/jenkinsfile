@@ -3,8 +3,8 @@ pipeline {
     agent any
 
 environment {
-    tfinit = "${env.tfinit}"
-    tfplan = "rerraform plan"
+    tfinit = "terraform inti"
+    tfplan = "trerraform plan"
             }
 
     stages ('Installing RoboShop WebApplication Components') {
