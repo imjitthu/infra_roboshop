@@ -29,8 +29,7 @@ environment {
                         } 
                         script {
                         if (params.tfaction == "destroy -auto-approve") {
-                            echo "if condition working"
-                            //ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
+                            ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
                         } else {
                             echo "tf action is: ${env.tfaction}"
                         }
