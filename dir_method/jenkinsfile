@@ -8,11 +8,11 @@ pipeline {
 
  }
 
-environment {
+// environment {
 
-    tfinit = "terraform init"
-    tfplan = "trerraform plan"
-            }
+//     tfinit = "terraform init"
+//     tfplan = "trerraform plan"
+//             }
 
     stages ('Installing RoboShop WebApplication Components') {
         stage ('Installing Databases') {
