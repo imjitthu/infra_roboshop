@@ -29,8 +29,8 @@ environment {
                         } 
                         when {
                             expression { choice == 'apply'}
+                            ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
                         }
-                        ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
                     }
                     }
                 }
