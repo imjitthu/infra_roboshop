@@ -3,19 +3,17 @@ pipeline {
     agent any
 
  parameters {
-   //string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
-   //text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+   choice(name: 'CHOICE', choices: ['plan', 'apply', 'destroy'], description: 'Pick any number')
 
-   //booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-   choice(name: 'CHOICE', choices: ['1', '2', '3'], description: 'Pick any number')
-
-   //password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
  }
 
 environment {
-    tfinit = "terraform inti"
+    when {
+                expression { choice == 'plan'}
+            }
+
+    tfinit = "terraform init"
     tfplan = "trerraform plan"
             }
 
