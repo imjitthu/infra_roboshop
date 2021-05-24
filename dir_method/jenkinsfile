@@ -8,11 +8,11 @@ pipeline {
 
  }
 
-// environment {
+environment {
 
-//     tfinit = "terraform init"
-//     tfplan = "trerraform plan"
-//             }
+    tfinit = "${params.Environment}"
+    tfplan = "${params.Environment}"
+            }
 
     stages ('Installing RoboShop WebApplication Components') {
         stage ('Installing Databases') {
@@ -23,7 +23,8 @@ pipeline {
                         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awskey', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         git 'https://github.com/imjitthu/tfas-mongo.git'
                         sh """
-                        ${params.Environment}
+                        ${env.tfinit}
+                        ${env.tfplan}
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
