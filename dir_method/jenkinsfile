@@ -1,6 +1,9 @@
 pipeline {
 
     agent any
+environment {
+    action = "terraform plan"
+            }
 
     stages ('Installing RoboShop WebApplication Components') {
         stage ('Installing Databases') {
@@ -12,7 +15,7 @@ pipeline {
                         git 'https://github.com/imjitthu/tfas-mongo.git'
                         sh """
                         terraform init
-                        terraform plan
+                        "${var.action}"
                         """
                         } 
                         ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
