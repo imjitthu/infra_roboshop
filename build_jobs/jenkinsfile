@@ -3,7 +3,7 @@ pipeline {
   agent any
 
   environment {
-    tfaction = "destroy -auto-approve"
+    tfaction = "terraform destroy -auto-approve"
     //http://lab.jithendar.com:8080/job/rs-build-jobs-pipelne/build/?token=build-roboshop
   }
 
