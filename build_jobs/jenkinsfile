@@ -8,25 +8,21 @@ pipeline {
   }
 
   stages {
-    stage('Installing DataBases') {
+    stage('Installing DataBases, Redis & RabbitMQ Server') {
       parallel {
         stage ('Installing Mysql') {
           steps {
             build job: 'rs-seed-jobs/mysql', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
+        stage ('Installing Redis') {
+          steps {
+            build job: 'rs-seed-jobs/redis', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
+          }
+          }
         stage ('Installing Mongo') {
           steps {
             build job: 'rs-seed-jobs/mongo', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
-          }
-        }
-      }
-    }
-    stage ('installing Cache Server') {
-      parallel {
-        stage ('Installing redis') {
-          steps {
-            build job: 'rs-seed-jobs/redis', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing RabbitMQ Server') {
@@ -36,6 +32,7 @@ pipeline {
         }
       }
     }
+
     stage ('Installing RoboShop Components') {
       parallel {
         stage ('Installing Catalogue') {
