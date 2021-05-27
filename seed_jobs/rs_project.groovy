@@ -4,6 +4,9 @@ folder('rs-seed-jobs') {
 }
 
 pipelineJob('rs-seed-jobs/mongo') {
+  triggers {
+  scm('*/2 * * * *')
+    }
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -25,6 +28,9 @@ pipelineJob('rs-seed-jobs/mongo') {
 }
 
 pipelineJob('rs-seed-jobs/mysql') {
+  triggers {
+  scm('*/2 * * * *')
+    }
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -46,6 +52,9 @@ pipelineJob('rs-seed-jobs/mysql') {
 }
 
 pipelineJob('rs-seed-jobs/redis') {
+  triggers {
+  scm('*/2 * * * *')
+    }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -67,6 +76,9 @@ pipelineJob('rs-seed-jobs/redis') {
 }
 
 pipelineJob('rs-seed-jobs/rabbitmq') {
+  triggers {
+  scm('*/2 * * * *')
+    }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -88,6 +100,9 @@ pipelineJob('rs-seed-jobs/rabbitmq') {
 }
 
 pipelineJob('rs-seed-jobs/cart') {
+  triggers {
+  scm('*/2 * * * *')
+    }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -109,6 +124,9 @@ pipelineJob('rs-seed-jobs/cart') {
 }
 
 pipelineJob('rs-seed-jobs/catalogue') {
+  triggers {
+  scm('*/2 * * * *')
+    }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -130,6 +148,9 @@ pipelineJob('rs-seed-jobs/catalogue') {
 }
 
 pipelineJob('rs-seed-jobs/user') {
+  triggers {
+  scm('*/2 * * * *')
+    }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -151,6 +172,9 @@ pipelineJob('rs-seed-jobs/user') {
 }
 
 pipelineJob('rs-seed-jobs/shipping') {
+  triggers {
+  scm('*/2 * * * *')
+    }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -172,6 +196,9 @@ pipelineJob('rs-seed-jobs/shipping') {
 }
 
 pipelineJob('rs-seed-jobs/payment') {
+  triggers {
+  scm('*/2 * * * *')
+    }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -193,6 +220,9 @@ pipelineJob('rs-seed-jobs/payment') {
 }
 
 pipelineJob('rs-seed-jobs/frontend') {
+  triggers {
+  scm('*/2 * * * *')
+    }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
