@@ -1,9 +1,9 @@
-folder('rs-seed-jobs') {
-  displayName('rs-seed-jobs')
-  description('rs-seed-jobs')
+folder('RoboShop_WebApp') {
+  displayName('RoboShop_WebApp')
+  description('RoboShop_WebApp')
 }
 
-pipelineJob('rs-seed-jobs/mongo') {
+pipelineJob('RoboShop_WebApp/mongo') {
   triggers {
   scm('*/2 * * * *')
     }
@@ -27,7 +27,7 @@ pipelineJob('rs-seed-jobs/mongo') {
   }
 }
 
-pipelineJob('rs-seed-jobs/mysql') {
+pipelineJob('RoboShop_WebApp/mysql') {
   triggers {
   scm('*/2 * * * *')
     }
@@ -51,7 +51,7 @@ pipelineJob('rs-seed-jobs/mysql') {
   }
 }
 
-pipelineJob('rs-seed-jobs/redis') {
+pipelineJob('RoboShop_WebApp/redis') {
   triggers {
   scm('*/2 * * * *')
     }  
@@ -75,7 +75,7 @@ pipelineJob('rs-seed-jobs/redis') {
   }
 }
 
-pipelineJob('rs-seed-jobs/rabbitmq') {
+pipelineJob('RoboShop_WebApp/rabbitmq') {
   triggers {
   scm('*/2 * * * *')
     }  
@@ -99,7 +99,7 @@ pipelineJob('rs-seed-jobs/rabbitmq') {
   }
 }
 
-pipelineJob('rs-seed-jobs/cart') {
+pipelineJob('RoboShop_WebApp/cart') {
   triggers {
   scm('*/2 * * * *')
     }  
@@ -123,7 +123,7 @@ pipelineJob('rs-seed-jobs/cart') {
   }
 }
 
-pipelineJob('rs-seed-jobs/catalogue') {
+pipelineJob('RoboShop_WebApp/catalogue') {
   triggers {
   scm('*/2 * * * *')
     }  
@@ -147,7 +147,7 @@ pipelineJob('rs-seed-jobs/catalogue') {
   }
 }
 
-pipelineJob('rs-seed-jobs/user') {
+pipelineJob('RoboShop_WebApp/user') {
   triggers {
   scm('*/2 * * * *')
     }  
@@ -171,7 +171,7 @@ pipelineJob('rs-seed-jobs/user') {
   }
 }
 
-pipelineJob('rs-seed-jobs/shipping') {
+pipelineJob('RoboShop_WebApp/shipping') {
   triggers {
   scm('*/2 * * * *')
     }  
@@ -195,7 +195,7 @@ pipelineJob('rs-seed-jobs/shipping') {
   }
 }
 
-pipelineJob('rs-seed-jobs/payment') {
+pipelineJob('RoboShop_WebApp/payment') {
   triggers {
   scm('*/2 * * * *')
     }  
@@ -219,7 +219,7 @@ pipelineJob('rs-seed-jobs/payment') {
   }
 }
 
-pipelineJob('rs-seed-jobs/frontend') {
+pipelineJob('RoboShop_WebApp/frontend') {
   triggers {
   scm('*/2 * * * *')
     }  
