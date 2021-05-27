@@ -12,22 +12,22 @@ pipeline {
       parallel {
         stage ('Installing Mysql') {
           steps {
-            build job: 'rs-seed-jobs/mysql', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
+            build job: 'RoboShop_WebApp/mysql', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing Redis') {
           steps {
-            build job: 'rs-seed-jobs/redis', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
+            build job: 'RoboShop_WebApp/redis', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
           }
         stage ('Installing Mongo') {
           steps {
-            build job: 'rs-seed-jobs/mongo', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
+            build job: 'RoboShop_WebApp/mongo', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing RabbitMQ Server') {
           steps {
-            build job: 'rs-seed-jobs/rabbitmq', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
+            build job: 'RoboShop_WebApp/rabbitmq', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
       }
@@ -37,34 +37,34 @@ pipeline {
       parallel {
         stage ('Installing Catalogue') {
           steps {
-          build job: 'rs-seed-jobs/catalogue', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
+          build job: 'RoboShop_WebApp/catalogue', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing Cart') {
           steps {
-            build job: 'rs-seed-jobs/cart', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
+            build job: 'RoboShop_WebApp/cart', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing user') {
           steps {
-            build job: 'rs-seed-jobs/user', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
+            build job: 'RoboShop_WebApp/user', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing Payment') {
           steps {
-            build job: 'rs-seed-jobs/payment', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
+            build job: 'RoboShop_WebApp/payment', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
         stage ('Installing Shipping') {
           steps {
-            build job: 'rs-seed-jobs/shipping', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
+            build job: 'RoboShop_WebApp/shipping', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
           }
         }
       }
     }
     stage ('Installing Frontend') {
       steps {
-        build job: 'rs-seed-jobs/frontend', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
+        build job: 'RoboShop_WebApp/frontend', parameters: [string(name: 'tfaction', value: "${env.tfaction}")]
       }
     }
     }  
