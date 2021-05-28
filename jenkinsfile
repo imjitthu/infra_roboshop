@@ -1,5 +1,5 @@
 pipeline {
-    
+
     agent any
 
     stages {
@@ -14,9 +14,3 @@ pipeline {
         }
     }
 }
-
-
-
-// @Library("shared_library") _
-
-// roboshop("init")
