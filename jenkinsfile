@@ -8,8 +8,8 @@ pipeline {
                 sh '''
                 id
                 uname -a
-                echo mbu645qsxmkpzxfs4luz5sdwa3g2gf3yuba6bpm7kseuchewrkva | az devops login
-                aws
+                whoami
+                id jenkins
                 '''
             }
         }
