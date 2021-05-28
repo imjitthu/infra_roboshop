@@ -1,3 +1,21 @@
-@Library("shared_library") _
+pipeline {
+    agent any
 
-roboshop("init")
+    stages {
+        stage {
+            steps {
+                sh '''
+                which shell
+                id
+                uname -a
+                '''
+            }
+        }
+    }
+}
+
+
+
+// @Library("shared_library") _
+
+// roboshop("init")
