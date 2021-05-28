@@ -6,7 +6,7 @@ pipeline {
         stage ('Shell Commands') {
             steps {
                 sh '''
-                which shell
+                which
                 id
                 uname -a
                 '''
