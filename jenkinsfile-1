@@ -6,9 +6,9 @@ pipeline {
         stage ('Shell Commands') {
             steps {
                 sh '''
-                which
                 id
                 uname -a
+                aws help
                 '''
             }
         }
