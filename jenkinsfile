@@ -1,37 +1,3 @@
-pipeline {
+@Library('shared_library@master') _
 
-    agent any
-
-    environment {
-        AWS = credentials('AWS') //declaring AWS variable and passing AWS credentials to it
-      }
-
-    stages ('Installing RoboShop DB Components') {
-            stage ('Installing MongoDB') {
-                steps {
-                    dir ('mongo') {
-                    git 'https://github.com/imjitthu/tfas-mongo.git'
-                    sh '''
-                    export AWS_ACCESS_KEY_ID=${AWS_USR}
-                    export AWS_SECRET_ACCESS_KEY=${AWS_PSW}
-                    terraform init
-                    terraform destroy -auto-approve
-                    ''' 
-                    ansiblePlaybook credentialsId: 'DevOps321', installation: 'ansibletool', inventory: 'mongo_inv', playbook: 'mongo.yml'
-                    }
-                }
-            }
-        }
-        post { 
-        always { 
-            sh 'pwd ; ls'
-            dir ('mongo') {
-            sh 'pwd ; ls'
-            }
-        }
-    }
-} 
-
-
-//export: The export command is a built-in utility of Linux Bash shell. It is used to ensure the environment variables and functions to be passed to child processes.
-
+roboshop()
