@@ -242,3 +242,27 @@ pipelineJob('RoboShop_WebApp/frontend') {
     }
   }
 }
+
+pipelineJob('RoboShop_WebApp/vpc') {
+  triggers {
+  scm('*/2 * * * *')
+    }  
+  configure { flowdefinition ->
+    flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
+      'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
+        'userRemoteConfigs' {
+          'hudson.plugins.git.UserRemoteConfig' {
+            'url'('https://github.com/imjitthu/tfas-VPC.git')
+          }
+        }
+        'branches' {
+          'hudson.plugins.git.BranchSpec' {
+            'name'('*/master')
+          }
+        }
+      }
+      'scriptPath'('jenkinsfile')
+      'lightweight'(true)
+    }
+  }
+}
