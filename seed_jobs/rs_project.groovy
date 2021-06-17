@@ -5,7 +5,7 @@ folder('RoboShop_WebApp') {
 
 pipelineJob('RoboShop_WebApp/mongo') {
   triggers {
-  scm('*/2 * * * *')
+  { pollSCM('H */4 * * 1-5') }
     }
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
@@ -29,7 +29,7 @@ pipelineJob('RoboShop_WebApp/mongo') {
 
 pipelineJob('RoboShop_WebApp/mysql') {
   triggers {
-  scm('*/2 * * * *')
+  { pollSCM('H */4 * * 1-5') }
     }
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
@@ -53,7 +53,7 @@ pipelineJob('RoboShop_WebApp/mysql') {
 
 pipelineJob('RoboShop_WebApp/redis') {
   triggers {
-  scm('*/2 * * * *')
+  { pollSCM('H */4 * * 1-5') }
     }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
@@ -77,7 +77,7 @@ pipelineJob('RoboShop_WebApp/redis') {
 
 pipelineJob('RoboShop_WebApp/rabbitmq') {
   triggers {
-  scm('*/2 * * * *')
+  { pollSCM('H */4 * * 1-5') }
     }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
@@ -101,7 +101,7 @@ pipelineJob('RoboShop_WebApp/rabbitmq') {
 
 pipelineJob('RoboShop_WebApp/cart') {
   triggers {
-  scm('*/2 * * * *')
+  { pollSCM('H */4 * * 1-5') }
     }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
@@ -125,7 +125,7 @@ pipelineJob('RoboShop_WebApp/cart') {
 
 pipelineJob('RoboShop_WebApp/catalogue') {
   triggers {
-  scm('*/2 * * * *')
+  { pollSCM('H */4 * * 1-5') }
     }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
@@ -149,7 +149,7 @@ pipelineJob('RoboShop_WebApp/catalogue') {
 
 pipelineJob('RoboShop_WebApp/user') {
   triggers {
-  scm('*/2 * * * *')
+  { pollSCM('H */4 * * 1-5') }
     }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
@@ -173,7 +173,7 @@ pipelineJob('RoboShop_WebApp/user') {
 
 pipelineJob('RoboShop_WebApp/shipping') {
   triggers {
-  scm('*/2 * * * *')
+  { pollSCM('H */4 * * 1-5') }
     }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
@@ -197,7 +197,7 @@ pipelineJob('RoboShop_WebApp/shipping') {
 
 pipelineJob('RoboShop_WebApp/payment') {
   triggers {
-  scm('*/2 * * * *')
+  { pollSCM('H */4 * * 1-5') }
     }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
@@ -221,7 +221,7 @@ pipelineJob('RoboShop_WebApp/payment') {
 
 pipelineJob('RoboShop_WebApp/frontend') {
   triggers {
-  scm('*/2 * * * *')
+  { pollSCM('H */4 * * 1-5') }
     }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
@@ -245,7 +245,7 @@ pipelineJob('RoboShop_WebApp/frontend') {
 
 pipelineJob('RoboShop_WebApp/vpc') {
   triggers {
-  scm('*/2 * * * *')
+  { pollSCM('H */4 * * 1-5') }
     }  
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
